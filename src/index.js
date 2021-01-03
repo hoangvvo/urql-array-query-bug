@@ -9,8 +9,8 @@ const client = createClient({
 });
 
 const query = `
-query notifications($limit: Int!, $offset: Int) {
-	notifications(limit: $limit, offset: $offset) {
+query notifications {
+	notifications {
 		id
 		hasRead
 		storyId
@@ -21,12 +21,11 @@ query notifications($limit: Int!, $offset: Int) {
 
 const Notifications = () => {
 	const [result] = useQuery({
-		query,
-		variables: { limit: 2 }
+		query
 	});
 
 	const onClick = () => {
-		console.log(client.readQuery(query, { limit: 2 }));
+		console.log(client.readQuery(query));
 	};
 
 	return (<div>

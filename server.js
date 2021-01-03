@@ -12,7 +12,7 @@ type Notification {
 }
 
 type Query {
-  notifications(limit: Int!, offset: Int): [Notification!]!
+  notifications: [Notification!]!
 }
 `;
 
@@ -43,16 +43,9 @@ const notificationData = [{
 }];
 
 const resolvers = {
-	Notification: {
-		__resolveType(obj) {
-			if (obj.type === 'follow') return 'NotificationFollow';
-			else if (obj.type === 'invite') return 'NotificationInvite';
-			return null;
-		}
-	},
 	Query: {
-		notifications(parent, { limit, offset = 0 }) {
-			return notificationData.slice(offset, limit);
+		notifications(parent) {
+			return notificationData;
 		}
 	}
 };
