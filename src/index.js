@@ -12,13 +12,8 @@ query notifications($limit: Int!, $offset: Int) {
 	notifications(limit: $limit, offset: $offset) {
 		id
 		hasRead
-		... on NotificationFollow {
-			followerId
-		}
-		... on NotificationInvite {
-			storyId
-			inviterId
-		}
+		storyId
+		inviterId
 	}
 }
 `;

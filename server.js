@@ -3,22 +3,12 @@ const { graphqlHTTP } = require('express-graphql');
 const { makeExecutableSchema } = require('@graphql-tools/schema');
 
 const typeDefs = `
-interface Notification {
+type Notification {
   id: ID!
-  hasRead: Boolean!
-}
-
-type NotificationInvite implements Notification {
-  id: ID!
-  hasRead: Boolean!
-  inviterId: String!
-  storyId: String!
-}
-
-type NotificationFollow implements Notification {
-  id: ID!
-  hasRead: Boolean!
-  followerId: String!
+	hasRead: Boolean!
+	inviterId: String
+	storyId: String
+	followerId: String
 }
 
 type Query {
