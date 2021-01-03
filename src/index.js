@@ -20,8 +20,9 @@ query notifications {
 `;
 
 const Notifications = () => {
-	const [result] = useQuery({
-		query
+	const [result, refetch] = useQuery({
+		query,
+		requestPolicy: 'cache-and-network'
 	});
 
 	const onClick = () => {
@@ -33,6 +34,7 @@ const Notifications = () => {
 			{result.data?.notifications?.map(notification => <li key={notification.id}>{JSON.stringify(notification, null, 4)}</li>)}
 		</ul>
 		<button onClick={onClick}>readQuery</button>
+		<button onClick={() => refetch()}>refetch</button>
 	</div>);
 };
 
