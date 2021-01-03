@@ -1,10 +1,11 @@
 import { createClient, Provider, useQuery, dedupExchange, fetchExchange } from 'urql';
 import { cacheExchange } from '@urql/exchange-graphcache';
+import { devtoolsExchange } from '@urql/devtools';
 import './style';
 
 const client = createClient({
 	url: 'http://0.0.0.0:8080/graphql',
-	exchanges: [dedupExchange, cacheExchange({}), fetchExchange]
+	exchanges: [devtoolsExchange, dedupExchange, cacheExchange({}), fetchExchange]
 });
 
 const query = `
